@@ -6,6 +6,9 @@ import MapPicker from '../components/MapPicker';
 import { addAnnouncement, loadAnnouncements } from '../actions/announcementActions';
 import './Annonces.css';
 
+// Component dyal les annonces
+// Fih affichage w ajout dyal les annonces
+
 // Create base selectors
 const getAnnouncements = state => state?.announcements?.announcements || [];
 
@@ -50,6 +53,7 @@ class ErrorBoundary extends React.Component {
 }
 
 const Annonces = () => {
+  // State dyal form w modal
   const [showForm, setShowForm] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -69,7 +73,7 @@ const Annonces = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Use memoized selector
+  // Njibo les annonces mlli component kayloada
   const approvedAnnouncements = useSelector(selectApprovedAnnouncements);
   const isAuthenticated = useSelector(state => state.auth?.isAuthenticated);
 
@@ -77,6 +81,7 @@ const Annonces = () => {
     dispatch(loadAnnouncements());
   }, [dispatch]);
 
+  // Fonction bach tpushi annonce jdida
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     
@@ -116,6 +121,7 @@ const Annonces = () => {
     }
   }, [dispatch, formData, selectedLocation, isAuthenticated, navigate]);
 
+  // Fonction bach tchofi location f map
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -124,11 +130,13 @@ const Annonces = () => {
     }));
   }, []);
 
+  // Fonction bach tkhtar location mn map
   const handleLocationSelect = useCallback((location) => {
     setSelectedLocation(location);
     setShowMap(false);
   }, []);
 
+  // Fonction bach tfermi form
   const handleViewLocation = useCallback((coordinates) => {
     if (coordinates) {
       setViewingLocation(coordinates);
@@ -143,6 +151,7 @@ const Annonces = () => {
     setShowForm(!showForm);
   }, [showForm, isAuthenticated, navigate]);
 
+  // Affichage dyal les annonces w form
   return (
     <ErrorBoundary>
       <div className="annonces-container">

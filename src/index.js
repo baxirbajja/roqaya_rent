@@ -6,6 +6,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Point d'entrée dyal application
+// Kay initialiser React w Redux
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -15,4 +17,5 @@ root.render(
   </React.StrictMode>
 );
 
+// Rendering dyal application
 reportWebVitals();

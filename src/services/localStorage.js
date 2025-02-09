@@ -1,3 +1,6 @@
+// Service dyal localStorage
+// Kay7fed data f navigateur
+
 // Admin credentials
 const ADMIN_EMAIL = 'admin@saferent.com';
 const ADMIN_USERNAME = 'admin';
@@ -7,15 +10,18 @@ const ADMIN_PASSWORD = 'admin123'; // In a real app, this would be hashed and st
 const USER_KEY = 'user';
 const USERS_KEY = 'users';
 
+// Fonction bach tsajel data
 export const saveUser = (user) => {
   localStorage.setItem(USER_KEY, JSON.stringify(user));
 };
 
+// Fonction bach tjbed data
 export const getUser = () => {
   const user = localStorage.getItem(USER_KEY);
   return user ? JSON.parse(user) : null;
 };
 
+// Fonction bach tmse7 data
 export const removeUser = () => {
   localStorage.removeItem(USER_KEY);
 };

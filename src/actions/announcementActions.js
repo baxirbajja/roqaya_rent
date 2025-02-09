@@ -1,3 +1,6 @@
+// Had les actions kaykhdmo 3la les annonces: izid, i3dl, imseh, w ishof les annonces
+// Kol action 3ndha type dyalha w payload li kaywsl m3ah
+
 // Action Types
 export const ADD_ANNOUNCEMENT = 'ADD_ANNOUNCEMENT';
 export const APPROVE_ANNOUNCEMENT = 'APPROVE_ANNOUNCEMENT';
@@ -5,7 +8,7 @@ export const REJECT_ANNOUNCEMENT = 'REJECT_ANNOUNCEMENT';
 export const SET_ANNOUNCEMENTS = 'SET_ANNOUNCEMENTS';
 export const DELETE_ANNOUNCEMENT = 'DELETE_ANNOUNCEMENT';
 
-// Helper function to get announcements from localStorage
+// Fonction li katjib les annonces mn localStorage
 const getStoredAnnouncements = () => {
   try {
     return JSON.parse(localStorage.getItem('announcements')) || [];
@@ -15,7 +18,7 @@ const getStoredAnnouncements = () => {
   }
 };
 
-// Helper function to save announcements to localStorage
+// Fonction li katkhdem bach tsajil les annonces f localStorage
 const saveAnnouncements = (announcements) => {
   try {
     localStorage.setItem('announcements', JSON.stringify(announcements));
@@ -24,7 +27,8 @@ const saveAnnouncements = (announcements) => {
   }
 };
 
-// Add new announcement
+// Action bach tzid annonce jdida
+// Katkhdem b async/await hit ghadi tsna localStorage
 export const addAnnouncement = (announcement) => {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -55,7 +59,7 @@ export const addAnnouncement = (announcement) => {
   };
 };
 
-// Approve announcement
+// Action bach tacccepti annonce
 export const approveAnnouncement = (announcementId) => {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -89,7 +93,7 @@ export const approveAnnouncement = (announcementId) => {
   };
 };
 
-// Reject announcement
+// Action bach trfed annonce
 export const rejectAnnouncement = (announcementId) => {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
@@ -123,7 +127,7 @@ export const rejectAnnouncement = (announcementId) => {
   };
 };
 
-// Delete announcement
+// Action bach tmseh annonce
 export const deleteAnnouncement = (id) => {
   return (dispatch, getState) => {
     try {
@@ -141,7 +145,7 @@ export const deleteAnnouncement = (id) => {
   };
 };
 
-// Load all announcements
+// Action bach tjib ga3 les annonces
 export const loadAnnouncements = () => {
   return (dispatch) => {
     const announcements = getStoredAnnouncements();

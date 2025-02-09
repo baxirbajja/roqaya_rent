@@ -1,3 +1,5 @@
+// Component dyal dashboard dyal admin
+// Fih ga3 les annonces: pending, approved, w rejected
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
@@ -9,6 +11,7 @@ import {
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
+  // Njibo les annonces mlli component kayloada
   const dispatch = useDispatch();
   const announcements = useSelector(state => state?.announcements?.announcements || []);
   const user = useSelector(state => state?.auth?.user);
@@ -18,6 +21,7 @@ const AdminDashboard = () => {
     dispatch(loadAnnouncements());
   }, [dispatch]);
 
+  // Filter dyal les annonces
   const filteredAnnouncements = announcements.filter(announcement => {
     switch (filter) {
       case 'pending':
@@ -31,6 +35,7 @@ const AdminDashboard = () => {
     }
   });
 
+  // Fonction bach tacccepti annonce
   const handleApprove = async (id) => {
     try {
       await dispatch(approveAnnouncement(id));
@@ -39,6 +44,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // Fonction bach trfed annonce
   const handleReject = async (id) => {
     if (window.confirm('Êtes-vous sûr de vouloir rejeter cette annonce ?')) {
       try {
@@ -49,6 +55,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // Fonction bach tmseh annonce
   const handleDelete = async (id) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?')) {
       try {
@@ -59,6 +66,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // Fonction bach tfilteri les annonces 7sab status
   const getStatusClass = (status) => {
     switch (status) {
       case 'approved':
@@ -81,6 +89,7 @@ const AdminDashboard = () => {
     }
   };
 
+  // Affichage dyal dashboard
   return (
     <div className="admin-container">
       <div className="admin-header">

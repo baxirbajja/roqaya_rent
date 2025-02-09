@@ -8,6 +8,8 @@ import About from './pages/About';
 import { logout } from './actions/authActions';
 import './App.css';
 
+// Component principal dyal application
+// Fih routing w navigation
 const Navigation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,6 +78,7 @@ const Navigation = () => {
   );
 };
 
+// Protected route bach t7mi pages privés
 const ProtectedAdminRoute = ({ children }) => {
   const isAuthenticated = useSelector(state => state.auth?.isAuthenticated);
   const user = useSelector(state => state.auth?.user);
@@ -103,6 +106,7 @@ const ProtectedUserRoute = ({ children }) => {
   return children;
 };
 
+// Affichage dyal application
 const App = () => {
   return (
     <Router>
@@ -110,6 +114,7 @@ const App = () => {
         <Navigation />
 
         <div className="container mt-4">
+          // Routes dyal application
           <Routes>
             <Route 
               path="/" 

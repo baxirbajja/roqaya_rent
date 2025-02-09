@@ -5,20 +5,21 @@ import { login } from '../actions/authActions';
 import loca from '../Images/loca.jpg';
 import '../authentification.css';
 
-// hado component dial login
+// Component dyal login
+// Kaykhdm bach user iconnecta l compte dyalo
 const Login = () => {
   // hado hooks li ghadi n7tajo bach nconnectiw
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // state dial login form
+  // State dyal form
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
   const [error, setError] = useState('');
 
-  // fonction katexecuta mlli user kaybedel chi input
+  // Fonction katexecuta mlli user kaybedel chi input
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -26,7 +27,7 @@ const Login = () => {
     });
   };
 
-  // fonction katexecuta mlli user kayclicki 3la submit
+  // Fonction li katkhdem m3a submit dyal form
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -35,7 +36,7 @@ const Login = () => {
       // kansifto credentials l backend o kantsennaw response
       const response = await dispatch(login(formData.email, formData.password));
       
-      // ila kan user admin kandirih l dashboard dialo, ila la kandirih l annonces
+      // Redirection ila user connecté
       if (response && response.isAdmin) {
         navigate('/admin-dashboard');
       } else {
@@ -47,6 +48,7 @@ const Login = () => {
     }
   };
 
+  // Affichage dyal form
   return (
     <div className='d-flex justify-content-around'>
       <div className="d-inline-flex p-2">

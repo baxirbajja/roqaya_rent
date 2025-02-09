@@ -1,9 +1,12 @@
+// Configuration dyal Redux store
+// Kay centraliser state dyal application
+
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-// Create store with middleware
+// Creation dyal store
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))

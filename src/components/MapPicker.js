@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+// Component dyal map
+// Kay3tik interface bach tkhtar location
 const MapPicker = ({ position, setPosition, readonly = false }) => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
@@ -20,6 +22,7 @@ const MapPicker = ({ position, setPosition, readonly = false }) => {
       }).addTo(mapRef.current);
 
       if (!readonly) {
+        // Fonction bach tsifet position l parent
         mapRef.current.on('click', (e) => {
           const { lat, lng } = e.latlng;
           setPosition([lat, lng]);
@@ -27,8 +30,9 @@ const MapPicker = ({ position, setPosition, readonly = false }) => {
       }
     }
 
-    // Handle marker
+    // State dyal map w markers
     if (position) {
+      // Fonction bach tbdl marker
       if (markerRef.current) {
         markerRef.current.setLatLng(position);
       } else {
@@ -49,6 +53,7 @@ const MapPicker = ({ position, setPosition, readonly = false }) => {
     };
   }, [position, setPosition, readonly]);
 
+  // Affichage dyal map
   return (
     <div 
       ref={mapContainerRef}
