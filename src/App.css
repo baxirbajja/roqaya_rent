@@ -1,0 +1,63 @@
+#how {
+    margin: 40px 50px 20px 33px;
+    text-align: center;
+    color: white;
+}
+.card {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+    text-align: center;
+}
+h1{
+    margin: 30px;
+    background-color: #474547;
+    padding: 20px;
+    text-align: center;
+    font-size: 33px;
+    font-weight: bold;
+    color: #f8c291;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4),
+        1px 1px 0 #7d7d7e,
+        -1px -1px 0 #7d7d7e;
+    border-radius: 10px;
+}
+.why-us-title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #f8c291;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4),
+        1px 1px 0 #7d7d7e,
+        -1px -1px 0 #7d7d7e;
+}
+.info-box {
+    background-color: #fcfcfc;
+    border-radius: 12px;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.footer {
+    background-color: #474547;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer a {
+    color: #f8c291;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
