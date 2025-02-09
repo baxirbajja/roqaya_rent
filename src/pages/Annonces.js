@@ -152,9 +152,151 @@ const Annonces = () => {
   return (
     <ErrorBoundary>
       <div className="annonces-container">
+        <div className="header-section">
+          <h2>Annonces Immobilières</h2>
+          <button 
+            className="add-announcement-btn"
+            onClick={toggleForm}
+            title="Ajouter une annonce"
+          >
+            <i className="fas fa-plus"></i>
+            <span>Ajouter une annonce</span>
+          </button>
+        </div>
+
         {successMessage && (
           <div className="alert alert-success" role="alert">
             {successMessage}
+          </div>
+        )}
+
+        {showForm && (
+          <div className="announcement-form">
+            <h3 className="form-title">Ajouter une annonce</h3>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label className="form-label">Titre</label>
+                <input
+                  type="text"
+                  name="title"
+                  className="form-control"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Description</label>
+                <textarea
+                  name="description"
+                  className="form-control"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                  rows="4"
+                />
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Prix (DH)</label>
+                  <input
+                    type="number"
+                    name="price"
+                    className="form-control"
+                    value={formData.price}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Type</label>
+                  <select
+                    name="type"
+                    className="form-control"
+                    value={formData.type}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="Location">Location</option>
+                    <option value="Vente">Vente</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Surface (m²)</label>
+                  <input
+                    type="number"
+                    name="surface"
+                    className="form-control"
+                    value={formData.surface}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Nombre de pièces</label>
+                  <input
+                    type="number"
+                    name="rooms"
+                    className="form-control"
+                    value={formData.rooms}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Localisation</label>
+                <div className="location-input">
+                  <input
+                    type="text"
+                    name="location"
+                    className="form-control"
+                    value={formData.location}
+                    onChange={handleChange}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-outline-primary"
+                    onClick={() => setShowMap(true)}
+                  >
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>Choisir sur la carte</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label">Image URL</label>
+                <input
+                  type="url"
+                  name="image"
+                  className="form-control"
+                  value={formData.image}
+                  onChange={handleChange}
+                  placeholder="https://example.com/image.jpg"
+                />
+              </div>
+
+              <div className="form-actions">
+                <button type="submit" className="btn btn-primary">
+                  Publier
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={toggleForm}
+                >
+                  Annuler
+                </button>
+              </div>
+            </form>
           </div>
         )}
 
@@ -206,155 +348,14 @@ const Annonces = () => {
           )}
         </div>
 
-        {isAuthenticated && (
-          <button 
-            className="add-announcement-btn"
-            onClick={toggleForm}
-            title="Ajouter une annonce"
-          >
-            <i className="fas fa-plus"></i>
-          </button>
-        )}
-
-        {showForm && (
-          <div className="modal-backdrop" onClick={toggleForm}>
-            <div className="announcement-form" onClick={e => e.stopPropagation()}>
-              <h3 className="mb-4">Ajouter une annonce</h3>
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label">Titre</label>
-                  <input
-                    type="text"
-                    name="title"
-                    className="form-control"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Description</label>
-                  <textarea
-                    name="description"
-                    className="form-control"
-                    value={formData.description}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                  />
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label className="form-label">Prix (DH)</label>
-                    <input
-                      type="number"
-                      name="price"
-                      className="form-control"
-                      value={formData.price}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <label className="form-label">Type</label>
-                    <select
-                      name="type"
-                      className="form-control"
-                      value={formData.type}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="Location">Location</option>
-                      <option value="Vente">Vente</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label className="form-label">Surface (m²)</label>
-                    <input
-                      type="number"
-                      name="surface"
-                      className="form-control"
-                      value={formData.surface}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group col-md-6">
-                    <label className="form-label">Nombre de pièces</label>
-                    <input
-                      type="number"
-                      name="rooms"
-                      className="form-control"
-                      value={formData.rooms}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Localisation</label>
-                  <div className="d-flex gap-2">
-                    <input
-                      type="text"
-                      name="location"
-                      className="form-control"
-                      value={formData.location}
-                      onChange={handleChange}
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary"
-                      onClick={() => setShowMap(true)}
-                    >
-                      <i className="fas fa-map-marker-alt"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Image URL</label>
-                  <input
-                    type="url"
-                    name="image"
-                    className="form-control"
-                    value={formData.image}
-                    onChange={handleChange}
-                    placeholder="https://example.com/image.jpg"
-                  />
-                </div>
-
-                <div className="d-flex justify-content-end gap-2 mt-4">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={toggleForm}
-                  >
-                    Annuler
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Publier
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
-
         {showMap && (
           <div className="map-modal">
             <div className="map-container">
               <button 
-                className="close-map"
+                className="map-close-btn"
                 onClick={() => setShowMap(false)}
               >
-                ×
+                X
               </button>
               <MapPicker
                 position={selectedLocation}
@@ -368,11 +369,11 @@ const Annonces = () => {
           <div className="map-modal">
             <div className="map-container">
               <button 
-                className="close-map"
+                className="map-close-btn"
                 onClick={() => setViewingLocation(null)}
                 title="Fermer"
               >
-                <i className="fas fa-times"></i>
+                X
               </button>
               <MapPicker
                 position={viewingLocation}
