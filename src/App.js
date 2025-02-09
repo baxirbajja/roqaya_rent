@@ -114,7 +114,7 @@ const App = () => {
         <Navigation />
 
         <div className="container mt-4">
-          // Routes dyal application
+          {/* Navigation routes */}
           <Routes>
             <Route 
               path="/" 

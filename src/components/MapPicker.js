@@ -59,7 +59,9 @@ const MapPicker = ({ position, setPosition, readonly = false }) => {
       ref={mapContainerRef}
       style={{
         width: '100%',
-        height: '300px',
+        height: '100%',
+        position: 'relative',
+        zIndex: 1,
         marginBottom: '15px',
         border: '1px solid #ddd',
         borderRadius: '4px'
